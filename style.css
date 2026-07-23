@@ -21,7 +21,8 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden; /* Prevents side-scrolling */
+  overflow-x: hidden; 
+  width: 100%; /* Add this to enforce the hidden overflow */
 }
 
 body {
@@ -32,7 +33,9 @@ body {
   font-size: 16px;
   line-height: 1.7;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden; /* Prevents side-scrolling */
+  overflow-x: hidden; 
+  width: 100%; /* Add this to enforce the hidden overflow */
+  position: relative; /* Add this to lock the layout */
 }
 
 img,
@@ -722,17 +725,16 @@ button {
 }
 
 @media (max-width: 820px) {
-  .container {
-    width: min(100%, calc(100% - 1.4rem));
-    margin-inline: auto;
-  }
-
   .nav-inner {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 0.7rem 0.8rem;
     min-height: 88px;
+    position: relative; /* Add this to anchor your absolute menu */
   }
+  
+  /* ... keep the rest exactly the same ... */
+}
 
   .logo {
     gap: 0.8rem;
