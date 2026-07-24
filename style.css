@@ -730,11 +730,8 @@ button {
     justify-content: space-between;
     padding: 0.7rem 0.8rem;
     min-height: 88px;
-    position: relative; /* Add this to anchor your absolute menu */
+    position: relative;
   }
-  
-  /* ... keep the rest exactly the same ... */
-}
 
   .logo {
     gap: 0.8rem;
@@ -747,7 +744,7 @@ button {
     padding: 0.45rem;
   }
 
- .nav-menu {
+  .nav-menu {
     width: 100%;
     display: none;
     flex-direction: column;
@@ -757,12 +754,10 @@ button {
     border: 1px solid rgba(31, 41, 55, 0.08);
     border-radius: 22px;
     padding: 1rem;
-    
-    /* These new properties fix the circle and the spacing */
-    position: absolute; 
-    top: 100%; 
+    position: absolute;
+    top: 100%;
     left: 0;
-    margin-top: 0.4rem; /* Adjusted to bring it closer to the navbar */
+    margin-top: 0.4rem;
     box-shadow: var(--shadow-subtle);
   }
 
@@ -932,5 +927,18 @@ button {
   .about-card,
   .will-fade {
     transition: none !important;
+  }
+}
+@media (min-width: 821px) {
+  .nav-toggle {
+    display: none !important;
+  }
+
+  .nav-menu {
+    display: flex !important;
+  }
+
+  .nav-button {
+    display: inline-flex !important;
   }
 }
