@@ -46,7 +46,7 @@ content="https://furvana.in/assets/og-image.png">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=3">
 
 </head>
 
@@ -102,8 +102,8 @@ content="https://furvana.in/assets/og-image.png">
                 </h1>
                 <p>Manage your pets, discover trusted products, book services and protect them with insurance—all from one beautifully connected platform.</p>
                 <div class="hero-actions">
-                   <!-- New code without the arrow -->
-<a href="mailto:aniruddha@furvana.in?subject=Furvana%20Inquiry" class="secondary-btn">Contact Us</a>
+                    <button type="button" class="primary-btn" data-waitlist-open>Join the Waitlist</button>
+                    <a href="mailto:aniruddha@furvana.in?subject=Furvana%20Inquiry" class="secondary-btn">Contact Us</a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -239,9 +239,92 @@ content="https://furvana.in/assets/og-image.png">
                 <p class="eyebrow">Ready to launch</p>
                 <h2>The future of pet care starts here.</h2>
                 <p>Join Furvana and be among the first to experience India's unified pet ecosystem.</p>
+                <button type="button" class="primary-btn" data-waitlist-open>Join the Waitlist</button>
             </div>
         </div>
     </section>
+
+
+    <!-- ========================= -->
+    <!-- Waitlist -->
+    <!-- ========================= -->
+
+    <div class="waitlist-modal" id="waitlist-modal" aria-hidden="true" inert>
+        <div class="waitlist-backdrop" data-waitlist-close></div>
+        <div class="waitlist-dialog" role="dialog" aria-modal="true" aria-labelledby="waitlist-title" aria-describedby="waitlist-description">
+            <button type="button" class="waitlist-close" aria-label="Close waitlist" data-waitlist-close>
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+            <div class="waitlist-content" id="waitlist-form-view">
+                <p class="eyebrow">Early access</p>
+                <h2 id="waitlist-title">Be first in line.</h2>
+                <p id="waitlist-description">Join the Furvana waitlist and get exclusive access when we launch.</p>
+
+                <form id="waitlist-form" novalidate>
+                    <div class="waitlist-field-group">
+                        <label for="waitlist-name">Full name <span aria-hidden="true">*</span></label>
+                        <input id="waitlist-name" name="full_name" type="text" autocomplete="name" maxlength="100" required>
+                        <span class="waitlist-error" data-error-for="full_name" role="alert"></span>
+                    </div>
+
+                    <div class="waitlist-field-group">
+                        <label for="waitlist-email">Email address <span aria-hidden="true">*</span></label>
+                        <input id="waitlist-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+                        <span class="waitlist-error" data-error-for="email" role="alert"></span>
+                    </div>
+
+                    <div class="waitlist-grid">
+                        <div class="waitlist-field-group">
+                            <label for="waitlist-phone">Phone number</label>
+                            <input id="waitlist-phone" name="phone" type="tel" autocomplete="tel" maxlength="30">
+                            <span class="waitlist-error" data-error-for="phone" role="alert"></span>
+                        </div>
+
+                        <div class="waitlist-field-group">
+                            <label for="waitlist-city">City</label>
+                            <input id="waitlist-city" name="city" type="text" autocomplete="address-level2" maxlength="100">
+                            <span class="waitlist-error" data-error-for="city" role="alert"></span>
+                        </div>
+                    </div>
+
+                    <div class="waitlist-field-group">
+                        <label for="waitlist-pet-type">Pet type</label>
+                        <select id="waitlist-pet-type" name="pet_type">
+                            <option value="">Select one</option>
+                            <option value="Dog">Dog</option>
+                            <option value="Cat">Cat</option>
+                            <option value="Both">Both</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <span class="waitlist-error" data-error-for="pet_type" role="alert"></span>
+                    </div>
+
+                    <!-- Honeypot field: should remain empty. -->
+                    <div class="waitlist-honeypot" aria-hidden="true">
+                        <label for="waitlist-website">Website</label>
+                        <input id="waitlist-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <p class="waitlist-form-error" id="waitlist-form-error" role="alert" aria-live="polite"></p>
+
+                    <button type="submit" class="primary-btn waitlist-submit" id="waitlist-submit">
+                        <span class="waitlist-submit-label">Join the Waitlist</span>
+                    </button>
+
+                    <p class="waitlist-privacy">By joining, you agree to receive updates about Furvana and its launch.</p>
+                </form>
+            </div>
+
+            <div class="waitlist-success" id="waitlist-success" hidden>
+                <div class="waitlist-success-icon" aria-hidden="true">✓</div>
+                <p class="eyebrow">You're in</p>
+                <h2>You're on the list. 🐾</h2>
+                <p>Thanks for joining Furvana. We'll be in touch with your exclusive launch access.</p>
+                <button type="button" class="secondary-btn" data-waitlist-close>Close</button>
+            </div>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="container footer-inner">
@@ -263,7 +346,7 @@ content="https://furvana.in/assets/og-image.png">
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
 </body>
 
 </html>

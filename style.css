@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   color-scheme: light;
   font-family: 'Manrope', sans-serif;
   --bg: #FAFAFA;
@@ -940,5 +940,266 @@ button {
 
   .nav-button {
     display: inline-flex !important;
+  }
+}
+
+/* =========================
+   Waitlist modal
+   ========================= */
+body.waitlist-open {
+  overflow: hidden;
+}
+
+.waitlist-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 220ms ease-out, visibility 220ms ease-out;
+}
+
+.waitlist-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.waitlist-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.38);
+  backdrop-filter: blur(10px);
+}
+
+.waitlist-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 620px);
+  max-height: min(760px, calc(100vh - 2.5rem));
+  overflow-y: auto;
+  padding: 2.4rem;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(31, 41, 55, 0.08);
+  border-radius: 30px;
+  box-shadow: 0 40px 120px rgba(31, 41, 55, 0.22);
+  transform: translateY(16px) scale(0.985);
+  transition: transform 260ms ease-out;
+}
+
+.waitlist-modal.is-open .waitlist-dialog {
+  transform: translateY(0) scale(1);
+}
+
+.waitlist-close {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  color: var(--muted);
+  background: rgba(31, 41, 55, 0.05);
+  font-size: 1.7rem;
+  line-height: 1;
+  transition: background 180ms ease-out, color 180ms ease-out, transform 180ms ease-out;
+}
+
+.waitlist-close:hover,
+.waitlist-close:focus-visible {
+  color: var(--text);
+  background: rgba(76, 175, 80, 0.1);
+  transform: translateY(-1px);
+}
+
+.waitlist-content,
+.waitlist-success {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.waitlist-content .eyebrow,
+.waitlist-success .eyebrow {
+  margin-bottom: 0.9rem;
+}
+
+.waitlist-content h2,
+.waitlist-success h2 {
+  margin: 0;
+  font-size: clamp(2.1rem, 4vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.waitlist-content > p:not(.eyebrow),
+.waitlist-success > p:not(.eyebrow) {
+  margin: 0.9rem 0 1.6rem;
+  color: var(--muted);
+}
+
+#waitlist-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.waitlist-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.waitlist-field-group {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.waitlist-field-group label {
+  color: var(--text);
+  font-size: 0.94rem;
+  font-weight: 700;
+}
+
+.waitlist-field-group label span {
+  color: var(--green);
+}
+
+.waitlist-field-group input,
+.waitlist-field-group select {
+  width: 100%;
+  min-height: 54px;
+  padding: 0.8rem 0.95rem;
+  border: 1px solid rgba(31, 41, 55, 0.12);
+  border-radius: 16px;
+  background: #ffffff;
+  color: var(--text);
+  outline: none;
+  transition: border-color 180ms ease-out, box-shadow 180ms ease-out, background 180ms ease-out;
+}
+
+.waitlist-field-group input::placeholder {
+  color: rgba(75, 85, 99, 0.65);
+}
+
+.waitlist-field-group input:focus,
+.waitlist-field-group select:focus {
+  border-color: rgba(76, 175, 80, 0.65);
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1);
+}
+
+.waitlist-field-group input.has-error,
+.waitlist-field-group select.has-error {
+  border-color: #c94a4a;
+  box-shadow: 0 0 0 4px rgba(201, 74, 74, 0.08);
+}
+
+.waitlist-error {
+  min-height: 1.05rem;
+  color: #b33b3b;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.waitlist-form-error {
+  display: none;
+  margin: 0;
+  padding: 0.8rem 0.9rem;
+  border-radius: 14px;
+  color: #9f2f2f;
+  background: rgba(201, 74, 74, 0.07);
+  font-size: 0.9rem;
+}
+
+.waitlist-form-error.is-visible {
+  display: block;
+}
+
+.waitlist-submit {
+  width: 100%;
+  margin-top: 0.2rem;
+  min-height: 56px;
+}
+
+.waitlist-submit:disabled {
+  opacity: 0.72;
+  cursor: wait;
+  transform: none;
+}
+
+.waitlist-privacy {
+  margin: 0;
+  color: rgba(75, 85, 99, 0.8);
+  font-size: 0.78rem;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.waitlist-honeypot {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.waitlist-success {
+  text-align: center;
+  padding: 1.2rem 0.6rem 0.4rem;
+}
+
+.waitlist-success-icon {
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 1.2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: rgba(76, 175, 80, 0.12);
+  color: var(--green);
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.waitlist-success .secondary-btn {
+  margin-top: 0.4rem;
+}
+
+@media (max-width: 620px) {
+  .waitlist-modal {
+    padding: 0.7rem;
+  }
+
+  .waitlist-dialog {
+    max-height: calc(100vh - 1.4rem);
+    padding: 2rem 1.25rem 1.4rem;
+    border-radius: 24px;
+  }
+
+  .waitlist-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .waitlist-content h2,
+  .waitlist-success h2 {
+    font-size: 2.15rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .waitlist-modal,
+  .waitlist-dialog,
+  .waitlist-close,
+  .waitlist-field-group input,
+  .waitlist-field-group select {
+    transition: none !important;
   }
 }
